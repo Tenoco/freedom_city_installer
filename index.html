@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freedom City - Game Installer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="game-logo">
+                <img src="icon.webp" alt="Freedom City Logo">
+            </div>
+            <div class="game-title">
+                <h1>Freedom City</h1>
+                <p class="developer">By MicroGames</p>
+            </div>
+        </header>
+
+        <div class="details-container">
+            <div class="game-preview">
+                <img src="preview.jpg" alt="Game Preview">
+            </div>
+            
+            <div class="game-details">
+                <div class="detail-widget">
+                    <div class="detail-icon">
+                        <i class="fas fa-code-branch"></i>
+                    </div>
+                    <div class="detail-info">
+                        <h3>Version</h3>
+                        <p>1.0.0</p>
+                    </div>
+                </div>
+                
+                <div class="detail-widget">
+                    <div class="detail-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="detail-info">
+                        <h3>Last Update</h3>
+                        <p>March 31, 2025</p>
+                    </div>
+                </div>
+                
+                <div class="detail-widget">
+                    <div class="detail-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="detail-info">
+                        <h3>Supported Version</h3>
+                        <p>Android 7.0 and above</p>
+                    </div>
+                </div>
+                
+                <div class="detail-widget">
+                    <div class="detail-icon">
+                        <i class="fas fa-file-archive"></i>
+                    </div>
+                    <div class="detail-info">
+                        <h3>Size</h3>
+                        <p>31 MB</p>
+                    </div>
+                </div>
+                
+                <button id="install-button" class="install-button">
+                    <span class="button-icon"><i class="fas fa-download"></i></span>
+                    <span class="button-text">Install Game</span>
+                </button>
+            </div>
+        </div>
+
+        <section class="installation-guide">
+            <h2>Installation Guide</h2>
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Download Files</h3>
+                    <p>Click the Install Game button to download the required files: <code>freedom_city_v1.apk</code> and <code>freedom_city_resources.zip</code>.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Install ZArchiver</h3>
+                    <p>If you don't have ZArchiver installed, download it from the Google Play Store.</p>
+                    <a href="https://play.google.com/store/apps/details?id=ru.zdevs.zarchiver" class="external-link" target="_blank">
+                        <i class="fab fa-google-play"></i> Get ZArchiver
+                    </a>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Extract Resources</h3>
+                    <p>Open ZArchiver and navigate to your Downloads folder. Find <code>freedom_city_resources.zip</code> and extract it.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Install APK</h3>
+                    <p>Go to your Downloads folder and tap <code>freedom_city_v1.apk</code> to install the game. You might need to allow installation from unknown sources in your security settings.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Play!</h3>
+                    <p>Open the installed Freedom City app and enjoy the game!</p>
+                </div>
+            </div>
+        </section>
+        
+        <footer>
+            <p>&copy; 2025 MicroGames. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>Downloading Freedom City</h2>
+            <div class="download-progress">
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p class="progress-text">Preparing downloads...</p>
+            </div>
+            <div class="download-files">
+                <div class="file">
+                    <span class="file-name">freedom_city_v1.apk</span>
+                    <span class="file-size">6.7 KB</span>
+                </div>
+                <div class="file">
+                    <span class="file-name">freedom_city_resources.zip</span>
+                    <span class="file-size">31 MB</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
