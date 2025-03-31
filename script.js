@@ -93,26 +93,52 @@ document.addEventListener('DOMContentLoaded', () => {
             const file = files[index];
             progressText.textContent = `Installing ${file.name}...`;
             
-            const link = document.createElement('a');
-            link.href = file.url;
-            link.download = file.name;
-            document.body.appendChild(link);
-            
-            // Create a click event
-            const clickEvent = new MouseEvent('click');
-            
-            // Add an event listener to detect when the download is complete
-            link.addEventListener('click', () => {
-                // Simulate download completion (in a real environment, this would need a different approach)
-                setTimeout(() => {
-                    document.body.removeChild(link);
-                    // Move to the next file
-                    downloadSequentially(index + 1);
-                }, file.size * 100); // Simulate download time based on file size
-            });
-            
-            // Trigger the download
-            link.dispatchEvent(clickEvent);
+            // Check if the file exists before attempting to download
+            fetch(file.url, { method: 'HEAD' })
+                .then(response => {
+                    if (response.ok) {
+                        // File exists, proceed with download
+                        const link = document.createElement('a');
+                        link.href = file.url;
+                        link.download = file.name;
+                        document.body.appendChild(link);
+                        
+                        // Create a click event
+                        const clickEvent = new MouseEvent('click');
+                        
+                        // Add an event listener to detect when the download is complete
+                        link.addEventListener('click', () => {
+                            // Simulate download completion
+                            setTimeout(() => {
+                                document.body.removeChild(link);
+                                // Move to the next file
+                                downloadSequentially(index + 1);
+                            }, file.size * 100); // Simulate download time based on file size
+                        });
+                        
+                        // Trigger the download
+                        link.dispatchEvent(clickEvent);
+                    } else {
+                        // File not found, skip to the next file
+                        console.warn(`File not found: ${file.name}. Skipping download.`);
+                        progressText.textContent = `File not found: ${file.name}. Skipping...`;
+                        
+                        // Wait a moment to show the message, then proceed to next file
+                        setTimeout(() => {
+                            downloadSequentially(index + 1);
+                        }, 1500);
+                    }
+                })
+                .catch(error => {
+                    // Network error or other fetch error, skip to the next file
+                    console.error(`Error checking file ${file.name}:`, error);
+                    progressText.textContent = `Error accessing ${file.name}. Skipping...`;
+                    
+                    // Wait a moment to show the message, then proceed to next file
+                    setTimeout(() => {
+                        downloadSequentially(index + 1);
+                    }, 1500);
+                });
         }
         
         // Start the sequential download with the first file (resources.zip)
